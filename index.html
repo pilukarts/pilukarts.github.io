@@ -15,8 +15,9 @@
   <header class="topbar">
     <a class="brand" href="#inicio" aria-label="Pilukarts, inicio"><span>P</span> PILUKARTS</a>
     <nav aria-label="Navegación principal">
-      <a href="#proyectos">Repositorios</a>
-      <a href="#estadisticas">Estadísticas</a>
+      <a href="#proyectos" data-i18n="navRepos">Repositorios</a>
+      <a href="#estadisticas" data-i18n="navStats">Estadísticas</a>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Cambiar idioma">ES | <b>EN</b></button>
       <a class="nav-github" href="https://github.com/pilukarts" target="_blank" rel="noreferrer">GitHub ↗</a>
     </nav>
   </header>
@@ -24,12 +25,12 @@
   <main>
     <section class="hero" id="inicio">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="pulse"></span> Código · Diseño · Ideas</p>
-        <h1>Construyendo cosas<br /><em>que funcionan.</em></h1>
-        <p class="intro" id="bio">Proyectos, experimentos y código abierto de Pilukarts.</p>
+        <p class="eyebrow"><span class="pulse"></span> <span data-i18n="eyebrow">Código · Diseño · Ideas</span></p>
+        <h1 data-i18n="hero">Construyendo cosas<br /><em>que funcionan.</em></h1>
+        <p class="intro" id="bio" data-fallback="bio">Proyectos, experimentos y código abierto de Pilukarts.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#proyectos">Explorar proyectos</a>
-          <a class="button button-ghost" href="https://github.com/pilukarts" target="_blank" rel="noreferrer">Ver perfil ↗</a>
+          <a class="button button-primary" href="#proyectos" data-i18n="explore">Explorar proyectos</a>
+          <a class="button button-ghost" href="https://github.com/pilukarts" target="_blank" rel="noreferrer" data-i18n="profile">Ver perfil ↗</a>
         </div>
       </div>
       <aside class="profile-card" aria-label="Perfil de GitHub">
@@ -47,7 +48,7 @@
 
     <section class="projects section" id="proyectos">
       <div class="section-heading">
-        <div><p class="section-number">01 / REPOSITORIOS</p><h2>Proyectos públicos</h2></div>
+        <div><p class="section-number" data-i18n="reposLabel">01 / REPOSITORIOS</p><h2 data-i18n="projects">Proyectos públicos</h2></div>
         <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar proyecto…" aria-label="Buscar repositorio" /></label>
       </div>
       <div class="filters" id="filters" aria-label="Filtrar por lenguaje"></div>
@@ -58,7 +59,7 @@
     </section>
 
     <section class="stats-section section" id="estadisticas">
-      <div class="section-heading"><div><p class="section-number">02 / ESTADÍSTICAS</p><h2>El código, en números</h2></div></div>
+        <div class="section-heading"><div><p class="section-number" data-i18n="statsLabel">02 / ESTADÍSTICAS</p><h2 data-i18n="numbers">El código, en números</h2></div></div>
       <div class="stats-layout">
         <article class="chart-card">
           <div class="card-label">LENGUAJES MÁS USADOS</div>
