@@ -6,6 +6,12 @@ const filters = document.querySelector('#filters');
 let repositories = [];
 let activeLanguage = 'Todos';
 const projectCovers = { OrdenOFlordsThePuzzleGame: 'assets/orden-of-lords.webp' };
+const translations = {
+  es:{navRepos:'Repositorios',navStats:'Estadísticas',eyebrow:'Código · Diseño · Ideas',hero:'Construyendo cosas<br><em>que funcionan.</em>',explore:'Explorar proyectos',profile:'Ver perfil ↗',reposLabel:'01 / REPOSITORIOS',projects:'Proyectos públicos',statsLabel:'02 / ESTADÍSTICAS',numbers:'El código, en números',play:'Jugar ahora',code:'Ver código'},
+  en:{navRepos:'Repositories',navStats:'Statistics',eyebrow:'Code · Design · Ideas',hero:'Building things<br><em>that work.</em>',explore:'Explore projects',profile:'View profile ↗',reposLabel:'01 / REPOSITORIES',projects:'Public projects',statsLabel:'02 / STATISTICS',numbers:'Code, by the numbers',play:'Play now',code:'View code'}
+};
+let language = localStorage.getItem('pilukarts-language') || (navigator.language.startsWith('es') ? 'es' : 'en');
+function applyLanguage(){document.documentElement.lang=language;document.querySelectorAll('[data-i18n]').forEach(el=>el.innerHTML=translations[language][el.dataset.i18n]);document.querySelector('#lang-toggle').innerHTML=language==='es'?'<b>ES</b> | EN':'ES | <b>EN</b>';if(repositories.length)renderRepositories();}
 
 const escapeHTML = (value = '') => value.replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
 const compact = number => new Intl.NumberFormat('es', { notation: 'compact' }).format(number || 0);
@@ -27,7 +33,7 @@ function renderRepositories() {
         <span><i class="lang-dot"></i>${escapeHTML(repo.language || 'Código')}</span>
         <span>★ ${repo.stargazers_count}</span><span>⑂ ${repo.forks_count}</span>
       </div>
-      ${projectCovers[repo.name] ? `<div class="repo-actions"><a class="play-link" href="https://pilukarts.github.io/${repo.name}/" target="_blank" rel="noreferrer">Jugar ahora</a><a href="${repo.html_url}" target="_blank" rel="noreferrer">Ver código</a></div>` : ''}
+      ${projectCovers[repo.name] ? `<div class="repo-actions"><a class="play-link" href="https://pilukarts.github.io/${repo.name}/" target="_blank" rel="noreferrer">${translations[language].play}</a><a href="${repo.html_url}" target="_blank" rel="noreferrer">${translations[language].code}</a></div>` : ''}
     </article>`).join('');
   message.hidden = visible.length > 0;
   message.textContent = 'No hay proyectos que coincidan con la búsqueda.';
@@ -76,4 +82,6 @@ async function loadGitHub() {
 search.addEventListener('input', renderRepositories);
 filters.addEventListener('click', event => { if (!event.target.matches('[data-lang]')) return; activeLanguage = event.target.dataset.lang; renderFilters(); renderRepositories(); });
 document.querySelector('#year').textContent = new Date().getFullYear();
+document.querySelector('#lang-toggle').addEventListener('click',()=>{language=language==='es'?'en':'es';localStorage.setItem('pilukarts-language',language);applyLanguage();});
+applyLanguage();
 loadGitHub();
