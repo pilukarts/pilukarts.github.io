@@ -7,8 +7,8 @@ let repositories = [];
 let activeLanguage = 'Todos';
 const projectCovers = { OrdenOFlordsThePuzzleGame: 'assets/orden-of-lords.webp' };
 const translations = {
-  es:{navRepos:'Repositorios',navStats:'Estadísticas',eyebrow:'Código · Diseño · Ideas',hero:'Construyendo cosas<br><em>que funcionan.</em>',explore:'Explorar proyectos',profile:'Ver perfil ↗',reposLabel:'01 / REPOSITORIOS',projects:'Proyectos públicos',statsLabel:'02 / ESTADÍSTICAS',numbers:'El código, en números',play:'Jugar ahora',code:'Ver código'},
-  en:{navRepos:'Repositories',navStats:'Statistics',eyebrow:'Code · Design · Ideas',hero:'Building things<br><em>that work.</em>',explore:'Explore projects',profile:'View profile ↗',reposLabel:'01 / REPOSITORIES',projects:'Public projects',statsLabel:'02 / STATISTICS',numbers:'Code, by the numbers',play:'Play now',code:'View code'}
+  es:{navWorlds:'Mundos',navRepos:'Repositorios',navStats:'Estadísticas',eyebrow:'Código · Diseño · Ideas',hero:'Construyendo cosas<br><em>que funcionan.</em>',explore:'Explorar proyectos',profile:'Ver perfil ↗',worldsLabel:'01 / UNIVERSO PILUKARTS',worldsTitle:'Cinco juegos.<br><em>Cinco mundos.</em>',lordsCopy:'Cuatro Lords, gemas elementales y una torre que despierta con cada match.',forgeCopy:'Comandantes, alianzas y energía estelar en una guerra por la forja.',pilukaCopy:'Una heroína, poderes inesperados y un universo lleno de personalidad.',horusCopy:'Dioses, secretos y tesoros protegidos por un templo antiguo.',gloryCopy:'Héroes rivales entran en la arena para conquistar su propia leyenda.',enterWorld:'Entrar al mundo ↗',discoverWorld:'Descubrir ↗',reposLabel:'02 / REPOSITORIOS',projects:'Proyectos públicos',statsLabel:'03 / ESTADÍSTICAS',numbers:'El código, en números',play:'Jugar ahora',code:'Ver código'},
+  en:{navWorlds:'Worlds',navRepos:'Repositories',navStats:'Statistics',eyebrow:'Code · Design · Ideas',hero:'Building things<br><em>that work.</em>',explore:'Explore projects',profile:'View profile ↗',worldsLabel:'01 / PILUKARTS UNIVERSE',worldsTitle:'Five games.<br><em>Five worlds.</em>',lordsCopy:'Four Lords, elemental gems and a tower that awakens with every match.',forgeCopy:'Commanders, alliances and stellar energy collide in a war for the forge.',pilukaCopy:'One heroine, unexpected powers and a universe bursting with personality.',horusCopy:'Gods, secrets and treasures protected by an ancient temple.',gloryCopy:'Rival heroes enter the arena to conquer their own legend.',enterWorld:'Enter the world ↗',discoverWorld:'Discover ↗',reposLabel:'02 / REPOSITORIES',projects:'Public projects',statsLabel:'03 / STATISTICS',numbers:'Code, by the numbers',play:'Play now',code:'View code'}
 };
 let language = localStorage.getItem('pilukarts-language') || (navigator.language.startsWith('es') ? 'es' : 'en');
 function applyLanguage(){document.documentElement.lang=language;document.querySelectorAll('[data-i18n]').forEach(el=>el.innerHTML=translations[language][el.dataset.i18n]);document.querySelector('#lang-toggle').innerHTML=language==='es'?'<b>ES</b> | EN':'ES | <b>EN</b>';if(repositories.length)renderRepositories();}
@@ -85,3 +85,29 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 document.querySelector('#lang-toggle').addEventListener('click',()=>{language=language==='es'?'en':'es';localStorage.setItem('pilukarts-language',language);applyLanguage();});
 applyLanguage();
 loadGitHub();
+
+const slider = document.querySelector('#world-slider');
+const slides = [...document.querySelectorAll('.world-slide')];
+const dots = document.querySelector('#slide-dots');
+let activeSlide = 0;
+
+dots.innerHTML = slides.map((_, index) => `<button type="button" class="${index === 0 ? 'active' : ''}" aria-label="Slide ${index + 1}" data-slide="${index}"></button>`).join('');
+
+function showSlide(index) {
+  activeSlide = (index + slides.length) % slides.length;
+  slides[activeSlide].scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest', inline: 'start' });
+  slides.forEach((slide, i) => slide.classList.toggle('is-active', i === activeSlide));
+  dots.querySelectorAll('button').forEach((dot, i) => dot.classList.toggle('active', i === activeSlide));
+  document.querySelector('#slide-count').textContent = `${String(activeSlide + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+}
+
+document.querySelector('#slide-prev').addEventListener('click', () => showSlide(activeSlide - 1));
+document.querySelector('#slide-next').addEventListener('click', () => showSlide(activeSlide + 1));
+dots.addEventListener('click', event => { const button = event.target.closest('[data-slide]'); if (button) showSlide(Number(button.dataset.slide)); });
+slider.addEventListener('keydown', event => { if (event.key === 'ArrowLeft') showSlide(activeSlide - 1); if (event.key === 'ArrowRight') showSlide(activeSlide + 1); });
+
+const slideObserver = new IntersectionObserver(entries => {
+  const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+  if (visible) showSlide(slides.indexOf(visible.target));
+}, { root: slider, threshold: .65 });
+slides.forEach(slide => slideObserver.observe(slide));
