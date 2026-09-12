@@ -15,6 +15,7 @@
   <header class="topbar">
     <a class="brand" href="#inicio" aria-label="Pilukarts, inicio"><span>P</span> PILUKARTS</a>
     <nav aria-label="Navegación principal">
+      <a href="#mundos" data-i18n="navWorlds">Mundos</a>
       <a href="#proyectos" data-i18n="navRepos">Repositorios</a>
       <a href="#estadisticas" data-i18n="navStats">Estadísticas</a>
       <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Cambiar idioma">ES | <b>EN</b></button>
@@ -46,9 +47,40 @@
       </aside>
     </section>
 
+    <section class="worlds section" id="mundos">
+      <div class="section-heading worlds-heading">
+        <div><p class="section-number" data-i18n="worldsLabel">01 / UNIVERSO PILUKARTS</p><h2 data-i18n="worldsTitle">Cinco juegos.<br><em>Cinco mundos.</em></h2></div>
+        <div class="slider-controls" aria-label="Controlar diapositivas">
+          <button id="slide-prev" type="button" aria-label="Anterior">←</button>
+          <span id="slide-count">01 / 05</span>
+          <button id="slide-next" type="button" aria-label="Siguiente">→</button>
+        </div>
+      </div>
+      <div class="world-slider" id="world-slider" tabindex="0">
+        <article class="world-slide world-lords is-active" data-world="lords">
+          <div class="world-art"><img src="assets/orden-of-lords.webp" alt="Los cuatro personajes de Orden of Lords"></div>
+          <div class="world-copy"><span class="world-kicker">01 · ELEMENTAL PUZZLE</span><h3>Orden of Lords</h3><p data-i18n="lordsCopy">Cuatro Lords, gemas elementales y una torre que despierta con cada match.</p><div class="world-tags"><span>Ignis</span><span>Ventus</span><span>Aqua</span><span>Terra</span></div><a class="world-play" href="https://pilukarts.github.io/OrdenOFlordsThePuzzleGame/" target="_blank" rel="noreferrer" data-i18n="enterWorld">Entrar al mundo ↗</a></div>
+        </article>
+        <article class="world-slide world-forge" data-world="forge">
+          <div class="world-art"><img src="https://raw.githubusercontent.com/pilukarts/ForgeniteFrenzy/main/public/images/global/commander-woman-full.png" alt="Comandante de Forgenite Frenzy" loading="lazy"></div>
+          <div class="world-copy"><span class="world-kicker">02 · GALACTIC STRATEGY</span><h3>Forgenite Frenzy</h3><p data-i18n="forgeCopy">Comandantes, alianzas y energía estelar en una guerra por la forja.</p><div class="world-tags"><span>Commanders</span><span>Forge</span><span>Alliance</span></div><a class="world-play" href="https://github.com/pilukarts/ForgeniteFrenzy" target="_blank" rel="noreferrer" data-i18n="discoverWorld">Descubrir ↗</a></div>
+        </article>
+        <article class="world-slide world-piluka" data-world="piluka">
+          <div class="world-symbol" aria-hidden="true">P</div><div class="world-copy"><span class="world-kicker">03 · HERO ADVENTURE</span><h3>Super Piluka</h3><p data-i18n="pilukaCopy">Una heroína, poderes inesperados y un universo lleno de personalidad.</p><div class="world-tags"><span>Piluka</span><span>Adventure</span><span>Godot</span></div><a class="world-play" href="https://github.com/pilukarts/super-piluka" target="_blank" rel="noreferrer" data-i18n="discoverWorld">Descubrir ↗</a></div>
+        </article>
+        <article class="world-slide world-horus" data-world="horus">
+          <div class="world-symbol" aria-hidden="true">𓅃</div><div class="world-copy"><span class="world-kicker">04 · ANCIENT MYSTERY</span><h3>Temple of Horus</h3><p data-i18n="horusCopy">Dioses, secretos y tesoros protegidos por un templo antiguo.</p><div class="world-tags"><span>Horus</span><span>Temple</span><span>Gold</span></div><a class="world-play" href="https://github.com/pilukarts/TempleOfHorus-game-slot" target="_blank" rel="noreferrer" data-i18n="discoverWorld">Descubrir ↗</a></div>
+        </article>
+        <article class="world-slide world-glory" data-world="glory">
+          <div class="world-symbol" aria-hidden="true">⚔</div><div class="world-copy"><span class="world-kicker">05 · EPIC COMBAT</span><h3>Battle of Glory</h3><p data-i18n="gloryCopy">Héroes rivales entran en la arena para conquistar su propia leyenda.</p><div class="world-tags"><span>Heroes</span><span>Arena</span><span>Glory</span></div><a class="world-play" href="https://github.com/pilukarts/BattleofGlory" target="_blank" rel="noreferrer" data-i18n="discoverWorld">Descubrir ↗</a></div>
+        </article>
+      </div>
+      <div class="slide-dots" id="slide-dots" aria-label="Elegir diapositiva"></div>
+    </section>
+
     <section class="projects section" id="proyectos">
       <div class="section-heading">
-        <div><p class="section-number" data-i18n="reposLabel">01 / REPOSITORIOS</p><h2 data-i18n="projects">Proyectos públicos</h2></div>
+        <div><p class="section-number" data-i18n="reposLabel">02 / REPOSITORIOS</p><h2 data-i18n="projects">Proyectos públicos</h2></div>
         <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar proyecto…" aria-label="Buscar repositorio" /></label>
       </div>
       <div class="filters" id="filters" aria-label="Filtrar por lenguaje"></div>
@@ -59,7 +91,7 @@
     </section>
 
     <section class="stats-section section" id="estadisticas">
-        <div class="section-heading"><div><p class="section-number" data-i18n="statsLabel">02 / ESTADÍSTICAS</p><h2 data-i18n="numbers">El código, en números</h2></div></div>
+        <div class="section-heading"><div><p class="section-number" data-i18n="statsLabel">03 / ESTADÍSTICAS</p><h2 data-i18n="numbers">El código, en números</h2></div></div>
       <div class="stats-layout">
         <article class="chart-card">
           <div class="card-label">LENGUAJES MÁS USADOS</div>
