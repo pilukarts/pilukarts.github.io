@@ -86,36 +86,16 @@ document.querySelector('#lang-toggle').addEventListener('click',()=>{language=la
 applyLanguage();
 loadGitHub();
 
-const slider = document.querySelector('#world-slider');
-const slides = [...document.querySelectorAll('.world-slide')];
-const dots = document.querySelector('#slide-dots');
-let activeSlide = 0;
-
-dots.innerHTML = slides.map((_, index) => `<button type="button" class="${index === 0 ? 'active' : ''}" aria-label="Slide ${index + 1}" data-slide="${index}"></button>`).join('');
-
-function updateSlideState(index) {
-  activeSlide = (index + slides.length) % slides.length;
-  slides.forEach((slide, i) => slide.classList.toggle('is-active', i === activeSlide));
-  dots.querySelectorAll('button').forEach((dot, i) => dot.classList.toggle('active', i === activeSlide));
-  document.querySelector('#slide-count').textContent = `${String(activeSlide + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
-}
-
-function showSlide(index) {
-  const next = (index + slides.length) % slides.length;
-  updateSlideState(next);
-  slider.scrollTo({
-    left: slides[next].offsetLeft - slider.offsetLeft,
-    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+const worlds = [...document.querySelectorAll('.reveal-world')];
+const worldObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      worldObserver.unobserve(entry.target);
+    }
   });
-}
-
-document.querySelector('#slide-prev').addEventListener('click', () => showSlide(activeSlide - 1));
-document.querySelector('#slide-next').addEventListener('click', () => showSlide(activeSlide + 1));
-dots.addEventListener('click', event => { const button = event.target.closest('[data-slide]'); if (button) showSlide(Number(button.dataset.slide)); });
-slider.addEventListener('keydown', event => { if (event.key === 'ArrowLeft') showSlide(activeSlide - 1); if (event.key === 'ArrowRight') showSlide(activeSlide + 1); });
-
-const slideObserver = new IntersectionObserver(entries => {
-  const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-  if (visible) updateSlideState(slides.indexOf(visible.target));
-}, { root: slider, threshold: .65 });
-slides.forEach(slide => slideObserver.observe(slide));
+}, { threshold: .18 });
+worlds.forEach((world, index) => {
+  world.style.setProperty('--reveal-delay', `${index * 70}ms`);
+  worldObserver.observe(world);
+});
