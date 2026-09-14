@@ -93,12 +93,20 @@ let activeSlide = 0;
 
 dots.innerHTML = slides.map((_, index) => `<button type="button" class="${index === 0 ? 'active' : ''}" aria-label="Slide ${index + 1}" data-slide="${index}"></button>`).join('');
 
-function showSlide(index) {
+function updateSlideState(index) {
   activeSlide = (index + slides.length) % slides.length;
-  slides[activeSlide].scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest', inline: 'start' });
   slides.forEach((slide, i) => slide.classList.toggle('is-active', i === activeSlide));
   dots.querySelectorAll('button').forEach((dot, i) => dot.classList.toggle('active', i === activeSlide));
   document.querySelector('#slide-count').textContent = `${String(activeSlide + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+}
+
+function showSlide(index) {
+  const next = (index + slides.length) % slides.length;
+  updateSlideState(next);
+  slider.scrollTo({
+    left: slides[next].offsetLeft - slider.offsetLeft,
+    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+  });
 }
 
 document.querySelector('#slide-prev').addEventListener('click', () => showSlide(activeSlide - 1));
@@ -108,6 +116,6 @@ slider.addEventListener('keydown', event => { if (event.key === 'ArrowLeft') sho
 
 const slideObserver = new IntersectionObserver(entries => {
   const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-  if (visible) showSlide(slides.indexOf(visible.target));
+  if (visible) updateSlideState(slides.indexOf(visible.target));
 }, { root: slider, threshold: .65 });
 slides.forEach(slide => slideObserver.observe(slide));
