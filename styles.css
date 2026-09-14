@@ -35,3 +35,14 @@
 /* Discreet repository gateway */
 .repository-gateway{position:relative;display:grid;grid-template-columns:minmax(180px,.6fr) 1.4fr;align-items:center;gap:clamp(2rem,7vw,8rem);min-height:480px;margin-top:3rem;margin-bottom:3rem;border:1px solid #292929;border-radius:34px;background:radial-gradient(circle at 15% 50%,rgba(239,35,60,.15),transparent 32%),linear-gradient(145deg,#141414,#090909);overflow:hidden}.repo-gateway-symbol{display:grid;place-items:center;width:min(26vw,260px);aspect-ratio:1;margin:auto;border:1px solid #ff4a61;border-radius:38%;background:radial-gradient(circle,#39121d,#110a0c 68%);color:#fff;font-size:clamp(6rem,14vw,12rem);font-weight:950;box-shadow:0 0 70px rgba(239,35,60,.24);rotate:-6deg}.repo-gateway-copy h2{margin:.7rem 0 1.4rem;font-size:clamp(3rem,6vw,6.5rem);line-height:.82;letter-spacing:-.06em}.repo-gateway-copy h2 em{color:var(--red);font-style:normal}.repo-gateway-copy p:not(.section-number){max-width:570px;color:#999;line-height:1.65;margin-bottom:2rem}
 @media(max-width:720px){.repository-gateway{grid-template-columns:1fr;text-align:center;padding-top:3rem;padding-bottom:3rem}.repo-gateway-symbol{width:180px}.repo-gateway-copy p:not(.section-number){margin-left:auto;margin-right:auto}.repo-gateway-copy h2{font-size:3.3rem}}
+
+
+/* GitHub community statistics and portal signals */
+.planet-status{display:inline-flex;align-items:center;margin:.55rem 0 .15rem;color:#9d94aa;font:800 .55rem ui-monospace,monospace;letter-spacing:.12em}
+.planet-status.status-live{color:#64efaf;text-shadow:0 0 12px rgba(100,239,175,.45)}
+.github-community{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
+.github-stats{display:flex;gap:1.4rem;flex-wrap:wrap}
+.github-stats>div{display:grid;min-width:92px}
+.github-stats strong{font-size:clamp(2rem,4vw,3.2rem);line-height:1;color:#fff}
+.github-stats span{margin-top:.35rem;color:#858585;font-size:.68rem;letter-spacing:.03em}
+@media(max-width:720px){.github-community{justify-content:center}.github-stats{justify-content:center;width:100%}.github-stats>div{text-align:center}}
