@@ -108,3 +108,16 @@ small,.planet-info small,.news-grid small,.news-date,.code-label,.console-head,.
 .category-card>p,.roadmap li small,.funding-module p,.results-list small{font-size:max(.8rem,12px);line-height:1.55}
 .github-stats span,.code-stats span,.category-count span{font-size:max(.72rem,11px)}
 @media(max-width:620px){small,.planet-info small,.news-grid small,.news-date,.code-label{font-size:max(.68rem,11px)}}
+
+/* Readability scale — minimum comfortable sizes */
+body{font-size:17px}
+.topbar nav a,.lang-toggle{font-size:14px}
+.button,.repo-actions a,.funding-module>a{font-size:14px}
+small,.planet-info small,.news-grid small,.news-date,.code-label,.console-head,.web3-warning b,.funding-module small,.funding-state span,.results-head small{font-size:13px!important;line-height:1.5}
+.eyebrow,.section-number,.card-label{font-size:14px!important}
+.planet-status,.roadmap li>i,.results-list b,.category-number,.category-count i{font-size:12px!important}
+.category-card>p,.roadmap li small,.funding-module p,.results-list small,.category-head>p{font-size:15px!important;line-height:1.65}
+.github-stats span,.code-stats span,.category-count span,.profile-stats span{font-size:14px!important;line-height:1.45}
+.repository-gateway .repo-gateway-copy p:not(.section-number),.section-intro,.planet-info p,.news-grid p,.web3-intro>p:not(.section-number){font-size:16px;line-height:1.7}
+.status,.world-kicker{font-size:12px}
+@media(max-width:620px){body{font-size:16px}.topbar nav a,.lang-toggle{font-size:13px}.category-card>p,.category-head>p,.results-list small{font-size:14px!important}}
