@@ -21,6 +21,7 @@ const staticCopy = new Map([
   ['OBJETIVO DE FINANCIACIÓN / ASTRO','FUNDING GOAL / ASTRO'],['Impulsar la próxima fase','Power the next phase'],['El progreso y la meta económica se publicarán cuando estén definidos. Todos los apoyos se gestionan exclusivamente desde Ko-fi.','Progress and the funding target will be published once defined. All support is handled exclusively through Ko-fi.'],['ESTADO DEL OBJETIVO','GOAL STATUS'],['PREPARANDO LANZAMIENTO','PREPARING LAUNCH'],['APOYAR EN KO-FI ↗','SUPPORT ON KO-FI ↗'],
   ['Perfil profesional de Pilukarts en GitHub. Los juegos y experiencias públicas se descubren desde sus planetas.','Pilukarts professional GitHub profile. Public games and experiences can be discovered through their planets.'],['proyectos catalogados','catalogued projects'],['repositorios originales','original repositories'],['experiencias web','web experiences'],['última actualización','last update'],['CAPACIDADES / POR CATEGORÍA','CAPABILITIES / BY CATEGORY'],['Una vista de alto nivel.','A high-level view.'],['Los proyectos individuales permanecen en GitHub. Aquí se muestra únicamente la arquitectura general de mi trabajo.','Individual projects remain on GitHub. Only the overall architecture of my work is shown here.'],
   ['06 / CANALES ABIERTOS','06 / OPEN CHANNELS'],['Conecta con','Connect with'],['Arte, desarrollo, procesos creativos y nuevas señales del universo Pilukarts.','Art, development, creative processes and new signals from the Pilukarts universe.'],['Perfil profesional','Professional profile'],
+  ['Señales del','Signals from the'],['laboratorio.','lab.'],['Pequeñas noticias de software generadas a partir de la actividad real de mis proyectos.','Small software updates generated from the real activity of my projects.'],['Nuevo','New'],['Reciente','Recent'],['Archivo','Archive'],['Conectando con el laboratorio…','Connecting to the lab…'],
   ['HECHO CON CÓDIGO Y CURIOSIDAD','MADE WITH CODE AND CURIOSITY'],['KO-FI · APOYAR MI TRABAJO ↗','KO-FI · SUPPORT MY WORK ↗']
 ]);
 const originalText = new WeakMap();
@@ -35,7 +36,7 @@ function translateStaticText(){
     node.nodeValue=language==='en'?base.replace(trimmed,translated):base;
   }
 }
-function applyLanguage(){document.documentElement.lang=language;document.querySelectorAll('[data-i18n]').forEach(el=>el.innerHTML=translations[language][el.dataset.i18n]);translateStaticText();document.querySelector('#lang-toggle').innerHTML=language==='es'?'<b>ES</b> | EN':'ES | <b>EN</b>';if(repositories.length)renderCategories();}
+function applyLanguage(){document.documentElement.lang=language;document.querySelectorAll('[data-i18n]').forEach(el=>el.innerHTML=translations[language][el.dataset.i18n]);translateStaticText();document.querySelector('#lang-toggle').innerHTML=language==='es'?'<b>ES</b> | EN':'ES | <b>EN</b>';if(repositories.length){renderCategories();renderDevSignals();}}
 
 const escapeHTML = (value = '') => value.replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
 const compact = number => new Intl.NumberFormat('es', { notation: 'compact' }).format(number || 0);
@@ -82,6 +83,28 @@ function renderChart() {
     <div class="lang-row"><span>${escapeHTML(lang)}</span><div class="bar"><i style="width:${count/max*100}%"></i></div><b>${count}</b></div>`).join('') || '<p>Aún no hay datos de lenguajes.</p>';
 }
 
+function renderDevSignals(){
+  const container=document.querySelector('#dev-signals');
+  if(!container)return;
+  const now=Date.now();
+  const signals=[...repositories]
+    .filter(repo=>repo.name!=='pilukarts.github.io')
+    .sort((a,b)=>new Date(b.updated_at)-new Date(a.updated_at))
+    .slice(0,3);
+  container.innerHTML=signals.map(repo=>{
+    const days=Math.max(0,Math.floor((now-new Date(repo.updated_at).getTime())/86400000));
+    const state=days<=30?{key:'fresh',es:'Nuevo',en:'New'}:days<=180?{key:'recent',es:'Reciente',en:'Recent'}:{key:'archive',es:'Archivo',en:'Archive'};
+    const updated=new Intl.DateTimeFormat(language==='es'?'es-ES':'en-GB',{day:'numeric',month:'short',year:'numeric'}).format(new Date(repo.updated_at));
+    return `<a class="dev-signal ${state.key}" href="${repo.html_url}" target="_blank" rel="noreferrer">
+      <div class="signal-state"><span></span><b>${state[language]}</b><time datetime="${repo.updated_at}">${updated}</time></div>
+      <small>${escapeHTML(repo.language||(language==='es'?'Proyecto digital':'Digital project'))}</small>
+      <h3>${escapeHTML(repo.name)}</h3>
+      <p>${escapeHTML(repo.description||(language==='es'?'Actualización del laboratorio Pilukarts.':'Update from the Pilukarts lab.'))}</p>
+      <i>${language==='es'?'Ver actualización ↗':'View update ↗'}</i>
+    </a>`;
+  }).join('');
+}
+
 async function loadGitHub() {
   try {
     const [profileResponse, reposResponse] = await Promise.all([
@@ -108,7 +131,7 @@ async function loadGitHub() {
     document.querySelector('#original-count').textContent = repositories.filter(repo => !repo.fork).length;
     document.querySelector('#website-count').textContent = repositories.filter(repo => repo.homepage).length;
     document.querySelector('#last-update').textContent = repositories.length ? date(repositories[0].updated_at) : '—';
-    renderCategories(); renderChart();
+    renderCategories(); renderChart(); renderDevSignals();
   } catch (error) {
     grid.innerHTML = '';
     message.hidden = false;
