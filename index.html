@@ -163,21 +163,20 @@
       <div class="repo-gateway-symbol" aria-hidden="true">P</div>
       <div class="repo-gateway-copy"><p class="section-number">05 / REPOSITORIO</p><h2 data-i18n="repoTitle">El código detrás<br><em>del universo.</em></h2><p>Perfil profesional de Pilukarts en GitHub. Los juegos y experiencias públicas se descubren desde sus planetas.</p><div class="github-community"><div class="github-stats"><div><strong id="gateway-followers">—</strong><span data-i18n="followersLabel">seguidores</span></div><div><strong id="gateway-repositories">—</strong><span data-i18n="repositoriesLabel">proyectos públicos</span></div><div><strong id="gateway-stars">—</strong><span data-i18n="starsLabel">estrellas</span></div></div><a class="button button-ghost" href="https://github.com/pilukarts" target="_blank" rel="noreferrer" data-i18n="followGithub">SEGUIR A PILUKARTS ↗</a></div></div>
       <div class="code-portfolio">
-        <div class="code-toolbar">
-          <label class="repo-search">BUSCAR PROYECTO <input id="search" type="search" placeholder="Nombre o descripción…"></label>
-          <div id="filters" class="filters" aria-label="Filtrar por lenguaje"></div>
-        </div>
         <div class="code-stats">
-          <div><strong id="total-projects">—</strong><span>proyectos públicos</span></div>
+          <div><strong id="total-projects">—</strong><span>proyectos catalogados</span></div>
           <div><strong id="original-count">—</strong><span>repositorios originales</span></div>
           <div><strong id="website-count">—</strong><span>experiencias web</span></div>
           <div><strong id="last-update">—</strong><span>última actualización</span></div>
         </div>
-        <div class="code-layout">
-          <div><p class="code-label">REPOSITORIOS / POR LENGUAJE</p><div id="repo-grid" class="repo-grid"></div><p id="message" class="message" hidden></p></div>
-          <aside class="language-panel"><p class="code-label">DISTRIBUCIÓN TECNOLÓGICA</p><div id="language-chart" class="language-chart"></div></aside>
+        <div class="category-head">
+          <div><p class="code-label">CAPACIDADES / POR CATEGORÍA</p><h3>Una vista de alto nivel.</h3></div>
+          <p>Los proyectos individuales permanecen en GitHub. Aquí se muestra únicamente la arquitectura general de mi trabajo.</p>
         </div>
-        <div class="technical-data" hidden><strong id="total-projects-legacy"></strong></div>
+        <div id="category-grid" class="category-grid" aria-live="polite"></div>
+        <div id="category-results" class="category-results" hidden></div>
+        <p id="message" class="message" hidden></p>
+        <div class="technical-data" hidden><div id="language-chart"></div><div id="repo-grid"></div><div id="filters"></div><input id="search"><strong id="total-projects-legacy"></strong></div>
       </div>
     </section>
   </main>
