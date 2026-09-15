@@ -68,9 +68,12 @@ async function loadGitHub() {
     document.querySelector('#follower-count').textContent = compact(profile.followers);
     const totalStars = repositories.reduce((sum, repo) => sum + repo.stargazers_count, 0);
     document.querySelector('#star-count').textContent = compact(totalStars);
-    document.querySelector('#gateway-followers')?.textContent = compact(profile.followers);
-    document.querySelector('#gateway-repositories')?.textContent = compact(profile.public_repos);
-    document.querySelector('#gateway-stars')?.textContent = compact(totalStars);
+    const gatewayFollowers = document.querySelector('#gateway-followers');
+    const gatewayRepositories = document.querySelector('#gateway-repositories');
+    const gatewayStars = document.querySelector('#gateway-stars');
+    if (gatewayFollowers) gatewayFollowers.textContent = compact(profile.followers);
+    if (gatewayRepositories) gatewayRepositories.textContent = compact(profile.public_repos);
+    if (gatewayStars) gatewayStars.textContent = compact(totalStars);
     document.querySelector('#total-projects').textContent = repositories.length;
     document.querySelector('#original-count').textContent = repositories.filter(repo => !repo.fork).length;
     document.querySelector('#website-count').textContent = repositories.filter(repo => repo.homepage).length;

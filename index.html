@@ -18,7 +18,8 @@
       <a href="#portales" data-i18n="navWorlds">Mundos</a>
       <a href="https://pilukarts.github.io/BattleofGlory/" class="nav-game" target="_blank" rel="noreferrer">⚔ Battle of Glory</a>
       <a href="https://www.redbubble.com/es/people/pilukarts/shop" class="nav-game" target="_blank" rel="noreferrer">🛍 Tienda Pilukarts</a>
-      <a href="#noticias">Noticias</a>\n      <a href="#airdrops">Airdrops</a>\n      <a href="#nfts">NFTs</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#proyectos">Código</a>
       <a href="#estadisticas" data-i18n="navStats">Estadísticas</a>
       <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Cambiar idioma">ES | <b>EN</b></button>
 
@@ -34,20 +35,17 @@
         <p>Personajes, juegos y arte nacidos de un mismo universo creativo. Elige un portal y entra.</p>
         <div class="hero-actions"><a class="button button-primary" href="#portales">Explorar el universo</a><a class="button button-ghost" href="https://www.redbubble.com/es/people/pilukarts/shop" target="_blank" rel="noreferrer">Arte y tienda ↗</a></div>
       </div>
-      <div class="character-orbit" aria-label="Personajes y juegos de Pilukarts">
-        <a class="orbit-card orbit-astro" href="tetris-astro/"><span>★</span><b>Astro</b><small>Jugar Cosmic Blocks</small></a>
-        <a class="orbit-card orbit-piluka" href="#portales"><span>P</span><b>Super Piluka</b><small>Conocer su mundo</small></a>
-        <a class="orbit-card orbit-lords" href="OrdenOFlordsThePuzzleGame/"><span>◆</span><b>Order of Lords</b><small>Entrar al puzzle</small></a>
-        <a class="orbit-card orbit-glory" href="BattleofGlory/"><span>⚔</span><b>Battle of Glory</b><small>Jugar ahora</small></a>
-        <div class="orbit-core"><span>P</span><small>UNIVERSE</small></div>
-      </div>
+      <a class="hero-planet-art" href="tetris-astro/" aria-label="Explorar Astro Cosmic Blocks">
+        <img src="assets/pilukarts-astro-planet.webp" alt="Astro observa un planeta mineral atravesado por señales luminosas">
+        <span><b>ASTRO / COSMIC BLOCKS</b><small>Explorar la misión ↗</small></span>
+      </a>
       <a class="scroll-cue" href="#portales">DESCUBRIR <span>↓</span></a>
     </section>
     <section class="hero creator-section" id="creadora">
       <div class="hero-copy">
         <p class="eyebrow"><span class="pulse"></span> <span data-i18n="eyebrow">Código · Diseño · Ideas</span></p>
-        <h1 data-i18n="hero">Construyendo cosas<br /><em>que funcionan.</em></h1>
-        <p class="intro" id="bio" data-fallback="bio">Proyectos, experimentos y código abierto de Pilukarts.</p>
+        <h1 data-i18n="hero">Arte con lógica.<br /><em>Código con alma.</em></h1>
+        <p class="intro" id="bio" data-fallback="bio">Soy ilustradora y full stack developer. Diseño personajes, interfaces y sistemas que convierten ideas en experiencias completas.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#proyectos" data-i18n="explore">Explorar proyectos</a>
           <a class="button button-ghost" href="https://github.com/pilukarts" target="_blank" rel="noreferrer" data-i18n="profile">Ver perfil ↗</a>
@@ -126,7 +124,23 @@
     <section class="repository-gateway section" id="proyectos">
       <div class="repo-gateway-symbol" aria-hidden="true">P</div>
       <div class="repo-gateway-copy"><p class="section-number">05 / REPOSITORIO</p><h2 data-i18n="repoTitle">El código detrás<br><em>del universo.</em></h2><p>Perfil profesional de Pilukarts en GitHub. Los juegos y experiencias públicas se descubren desde sus planetas.</p><div class="github-community"><div class="github-stats"><div><strong id="gateway-followers">—</strong><span data-i18n="followersLabel">seguidores</span></div><div><strong id="gateway-repositories">—</strong><span data-i18n="repositoriesLabel">proyectos públicos</span></div><div><strong id="gateway-stars">—</strong><span data-i18n="starsLabel">estrellas</span></div></div><a class="button button-ghost" href="https://github.com/pilukarts" target="_blank" rel="noreferrer" data-i18n="followGithub">SEGUIR A PILUKARTS ↗</a></div></div>
-      <div class="technical-data" hidden><input id="search"><div id="filters"></div><div id="repo-grid"></div><p id="message"></p><strong id="repo-count"></strong><strong id="follower-count"></strong><strong id="star-count"></strong><strong id="total-projects"></strong><strong id="original-count"></strong><strong id="website-count"></strong><strong id="last-update"></strong><div id="language-chart"></div></div>
+      <div class="code-portfolio">
+        <div class="code-toolbar">
+          <label class="repo-search">BUSCAR PROYECTO <input id="search" type="search" placeholder="Nombre o descripción…"></label>
+          <div id="filters" class="filters" aria-label="Filtrar por lenguaje"></div>
+        </div>
+        <div class="code-stats">
+          <div><strong id="total-projects">—</strong><span>proyectos públicos</span></div>
+          <div><strong id="original-count">—</strong><span>repositorios originales</span></div>
+          <div><strong id="website-count">—</strong><span>experiencias web</span></div>
+          <div><strong id="last-update">—</strong><span>última actualización</span></div>
+        </div>
+        <div class="code-layout">
+          <div><p class="code-label">REPOSITORIOS / POR LENGUAJE</p><div id="repo-grid" class="repo-grid"></div><p id="message" class="message" hidden></p></div>
+          <aside class="language-panel"><p class="code-label">DISTRIBUCIÓN TECNOLÓGICA</p><div id="language-chart" class="language-chart"></div></aside>
+        </div>
+        <div class="technical-data" hidden><strong id="total-projects-legacy"></strong></div>
+      </div>
     </section>
   </main>
 
