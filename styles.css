@@ -147,6 +147,7 @@ body{background:#070707}.topbar{background:rgba(7,7,7,.88);border-bottom-color:#
 .social-grid>a{min-height:112px;padding:1.25rem 1.4rem;color:#fff!important}
 .social-grid>a:visited{color:#fff!important}.social-grid b{color:#fff!important;font-size:18px;line-height:1.3}.social-grid small{color:#c2c2c2!important;font-size:15px!important;line-height:1.5}.social-grid i{font-size:1.35rem}.social-grid>a>span.social-icon{width:52px;height:52px;border:1px solid #ff3039;background:#ff151f;color:#fff;font-family:Arial,sans-serif;font-size:22px;font-weight:800;box-shadow:0 0 20px #ff151f22}.social-icon.linkedin{font-size:19px!important;letter-spacing:-1px}.social-icon.telegram{font-size:19px!important;transform:none}.social-icon.tiktok{font-size:28px!important}.social-icon.youtube{font-size:17px!important}.social-copy>p:not(.section-number){font-size:18px;line-height:1.75;color:#d0d0d0}.social-copy .section-number{font-size:14px!important}
 .topbar nav a{color:#e3e3e3;font-size:15px}.topbar nav a:visited{color:#e3e3e3}.topbar nav a:hover{color:#fff}
+.social-icon.opensea{font-size:25px!important;background:repeating-linear-gradient(135deg,#ff151f 0 5px,#b50008 5px 10px)!important}
 @media(max-width:620px){.social-grid>a{min-height:100px}.social-grid b{font-size:17px}.social-grid small{font-size:14px!important}.social-copy>p:not(.section-number){font-size:16px}}
 
 /* Chromebook-friendly footer */
