@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Don Olé y Miss Ñita: aprende español con humor, música, historias y retos cortos.">
+  <title>Don Olé — Spanish is for Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="back" href="/">← Pilukarts</a>
+    <span class="status"><i></i> Prototipo en desarrollo</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="kicker">APRENDE · RÍE · HABLA</p>
+        <h1>Spanish is<br><em>for learning.</em></h1>
+        <p class="intro">Don Olé quiere hablar español perfecto. El problema es que mezcla sujetos, verbos y complementos con muchísimo arte.</p>
+        <p class="intro"><strong>Miss Ñita</strong>, su pequeña compañera inteligente, aparece justo a tiempo para evitar el desastre.</p>
+        <div class="actions">
+          <a class="button primary" href="#mision">Probar la primera misión</a>
+          <a class="button secondary" href="#short">Ver el Short</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="burst"></div>
+        <img src="assets/don-ole-y-miss-enita.png" alt="Don Olé y Miss Ñita en un bar de pueblo español">
+        <span class="speech">¡Olé!</span>
+      </div>
+    </section>
+
+    <section class="duo">
+      <article class="character red-card">
+        <span class="number">01</span>
+        <h2>Don Olé</h2>
+        <p>Un caballero inglés con capa, sombrero cordobés y confianza ilimitada. Siempre habla con arte. Casi nunca con la gramática correcta.</p>
+        <span class="trait">SUPERPODER: entusiasmo</span>
+      </article>
+      <article class="character gold-card">
+        <span class="number">02</span>
+        <h2>Miss Ñita</h2>
+        <p>La Ñ convertida en heroína. Vive en el escudo de Don Olé y sale disparada cuando detecta una emergencia lingüística.</p>
+        <span class="trait">SUPERPODER: explicar sin aburrir</span>
+      </article>
+    </section>
+
+    <section class="short-section" id="short">
+      <div class="section-copy">
+        <p class="kicker">SHORT 01 · LA CAFETERÍA</p>
+        <h2>Una cuenta<br>con leche</h2>
+        <p>Un bar de pueblo. Un camarero con cara de malaje. Una frase que nadie esperaba escuchar.</p>
+        <blockquote>“Don Olé pone el arte.<br>Miss Ñita pone la gramática.”</blockquote>
+      </div>
+      <div class="phone">
+        <video controls playsinline poster="assets/don-ole-y-miss-enita.png">
+          <source src="assets/una-cuenta-con-leche.mp4" type="video/mp4">
+          Tu navegador no puede reproducir este vídeo.
+        </video>
+      </div>
+    </section>
+
+    <section class="mission" id="mision">
+      <div class="mission-heading">
+        <p class="kicker">MISIÓN RÁPIDA · NIVEL A1</p>
+        <h2>¿Qué debería pedir Don Olé?</h2>
+        <p>Elige la frase natural para pedir en una cafetería.</p>
+      </div>
+      <div class="quiz" role="group" aria-label="Pregunta de vocabulario">
+        <button data-correct="false">Una cuenta con leche</button>
+        <button data-correct="true">Un café con leche</button>
+        <button data-correct="false">Una leche con cuenta</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div>
+    </section>
+
+    <section class="formula">
+      <p class="kicker">UNA NUEVA FORMA DE PRACTICAR</p>
+      <h2>Short → broma → explicación → reto</h2>
+      <div class="steps">
+        <span>🎬 Historias cortas</span>
+        <span>🎤 Rap y baladas</span>
+        <span>🧠 Español práctico</span>
+        <span>⚡ Super Olé Bonus</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Don Olé &amp; Miss Ñita</strong>
+    <span>Un prototipo de Pilukarts · 2026</span>
+    <a href="https://github.com/pilukarts/Don-Ole-your-spanish-AI">Ver el proyecto en GitHub ↗</a>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
+
