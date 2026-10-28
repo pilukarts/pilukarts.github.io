@@ -21,6 +21,8 @@ Object.assign(translations.es,{"navWorlds":"Proyectos","navSkills":"Habilidades"
 Object.assign(translations.en,{"navWorlds":"Projects","navSkills":"Skills","planetTitle":"Ideas you can see.<br><em>Projects you can explore.</em>","projectLabel":"01 / FEATURED PROJECTS","projectIntro":"Art, design and code brought together in personal projects. Explore each project's current state and the work behind it.","inDevelopment":"IN DEVELOPMENT","viewCode":"View code ↗","viewProject":"Explore project ↗","viewDemo":"Open demo ↗","lordsDescription":"A fantasy puzzle with four elemental Lords. The gem artwork and movement are still in development.","lordsSkills":"Character design · Game design · TypeScript","astroDescription":"A cosmic puzzle starring Astro, with missions and touch controls.","astroSkills":"JavaScript · Interaction · Game design","donDescription":"An educational app for learning Spanish through lessons, practical vocabulary, exercises and games adapted to age and level. MVP in development.","donSkills":"Educational design · Characters · Web application","projectArtwork":"Project artwork","moreProjects":"More projects in the universe","developmentNote":"Projects in development: artwork and demos show work in progress rather than a final release.","skillsHeading":"Skills in action","skillsIntro":"Explore repositories by technology and discover how design and development connect.","visualSkills":"Illustration and characters · Interface design · Web development · Interactive games","featuredLink":"View featured projects","cinematicTitle":"Illustration, design<br><em>and code with identity.</em>","portfolioIntro":"I'm Pilukarts. I create characters, interfaces and interactive experiences that bring art and development together.","browseWork":"Explore my projects"});
 Object.assign(translations.es,{vanguardFeatured:'PROYECTO ESTRELLA',vanguardDescription:'Una aventura incremental de ciencia ficción: reúne recursos, mejora a tu comandante y construye arcas para guiar a la humanidad hacia un nuevo hogar.'});
 Object.assign(translations.en,{vanguardFeatured:'FLAGSHIP PROJECT',vanguardDescription:'A sci-fi incremental adventure: gather resources, upgrade your commander and build arks to guide humanity to a new home.'});
+Object.assign(translations.es,{astroFooterLink:'ASTRO · MASCOTA DE ASTRO TETRIS ↗',astroPause:'Pausar a Astro',astroResume:'Animar a Astro'});
+Object.assign(translations.en,{astroFooterLink:'ASTRO · ASTRO TETRIS MASCOT ↗',astroPause:'Pause Astro',astroResume:'Animate Astro'});
 const staticCopy = new Map([
   ['Noticias','News'],['Código','Code'],['Estadísticas','Statistics'],['Web3','Web3'],['Contacto','Contact'],['Apoyar en Ko-fi ↗','Support on Ko-fi ↗'],
   ['PILUKARTS ORIGINAL UNIVERSE','PILUKARTS ORIGINAL UNIVERSE'],['Personajes, juegos y arte nacidos de un mismo universo creativo. Elige un portal y entra.','Characters, games and art born from one creative universe. Choose a portal and enter.'],
@@ -128,7 +130,7 @@ async function loadGitHub() {
     ]);
     if (!profileResponse.ok || !reposResponse.ok) throw new Error('GitHub API unavailable');
     const profile = await profileResponse.json();
-    repositories = (await reposResponse.json()).filter(repo => !repo.archived);
+    repositories = (await reposResponse.json()).filter(repo => !repo.archived && !/forg[ei]nite|alliance[-_ ]?forge/i.test(repo.name));
     document.querySelector('#avatar').src = profile.avatar_url;
     document.querySelector('#profile-name').textContent = profile.name || profile.login;
     // Keep the curated bilingual portfolio introduction rather than replacing it with the GitHub bio.
@@ -184,3 +186,13 @@ worlds.forEach((world, index) => {
   world.style.setProperty('--reveal-delay', `${index * 70}ms`);
   worldObserver.observe(world);
 });
+
+const astroMotionButton=document.querySelector('#astro-motion');
+if(astroMotionButton){
+  astroMotionButton.addEventListener('click',()=>{
+    const paused=document.querySelector('.astro-footer').classList.toggle('is-paused');
+    astroMotionButton.setAttribute('aria-pressed',String(paused));
+    astroMotionButton.dataset.i18n=paused?'astroResume':'astroPause';
+    astroMotionButton.textContent=translations[language][astroMotionButton.dataset.i18n];
+  });
+}
