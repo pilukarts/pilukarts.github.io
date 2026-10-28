@@ -127,7 +127,7 @@ async function loadGitHub() {
     repositories = (await reposResponse.json()).filter(repo => !repo.archived);
     document.querySelector('#avatar').src = profile.avatar_url;
     document.querySelector('#profile-name').textContent = profile.name || profile.login;
-    document.querySelector('#bio').textContent = profile.bio || 'Proyectos, experimentos y código abierto de Pilukarts.';
+    // Keep the curated bilingual portfolio introduction rather than replacing it with the GitHub bio.
     document.querySelector('#repo-count').textContent = compact(profile.public_repos);
     document.querySelector('#follower-count').textContent = compact(profile.followers);
     const totalStars = repositories.reduce((sum, repo) => sum + repo.stargazers_count, 0);
