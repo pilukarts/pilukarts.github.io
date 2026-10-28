@@ -181,3 +181,24 @@ section[id]{scroll-margin-top:100px}
 @media(max-width:600px){.shop-options{grid-template-columns:1fr}.shop-option{padding:1.5rem}.shop-option .button{width:100%}.hero .creator-title{font-size:3.2rem}}
 
 .future-plans>summary{max-width:1264px;margin:auto;padding:1.5rem clamp(1.25rem,5vw,5.5rem);cursor:pointer;color:var(--white);border-bottom:1px solid var(--line)}.future-plans>summary:focus-visible{outline:2px solid var(--white);outline-offset:-4px}
+
+/* Visual portfolio: direct access to work, with planets retained in the cover art. */
+.featured-work{border-top:1px solid var(--line)}
+.work-list{display:grid;gap:3rem}
+.work-item{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;padding:2rem 0;border-bottom:1px solid var(--line)}
+.work-item:nth-child(even) .work-art{order:2}
+.work-art{position:relative;margin:0;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.work-art img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.work-art figcaption{padding:.75rem 1rem;border-top:1px solid var(--line);font-size:.75rem;letter-spacing:.08em;color:var(--muted)}
+.work-copy{min-width:0}
+.work-copy h3{font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.05em;line-height:1.05;margin:1rem 0}
+.work-copy>p{color:var(--muted);max-width:52ch}
+.work-state{display:inline-block;color:var(--white);border:1px solid var(--red);padding:.35rem .65rem;font-size:.7rem;font-weight:800;letter-spacing:.1em}
+.work-copy .work-skills{color:var(--white);font-size:.85rem;border-top:1px solid var(--line);padding-top:1rem;margin-top:1.5rem}
+.work-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.work-note,.work-more{color:var(--muted);font-size:.9rem;margin-top:2rem}
+.work-more summary{cursor:pointer;padding:1rem 0;color:var(--white)}
+.work-more li{margin:.75rem 0}.work-more a{color:var(--white)}
+.skills-overview{font-size:.9rem;color:var(--white)}
+@media(max-width:768px){.work-item{grid-template-columns:1fr;gap:1.5rem}.work-item:nth-child(even) .work-art{order:0}.work-actions .button{flex:1;text-align:center}}
+@media(max-width:400px){.work-actions{flex-direction:column}.work-copy h3{font-size:2rem}}
