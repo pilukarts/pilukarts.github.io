@@ -17,15 +17,12 @@
     <a class="brand" href="#inicio" aria-label="Pilukarts, inicio"><img src="assets/pilukarts-logo.png" alt="" /><b>PILUKARTS</b></a>
     <nav aria-label="Navegación principal">
       <a href="#portales" data-i18n="navWorlds">Mundos</a>
-      <a href="https://pilukarts.github.io/BattleofGlory/" class="nav-game" target="_blank" rel="noreferrer">⚔ Battle of Glory</a>
-      <a href="https://printumo.com/shop/pilukarts-in-the-world" class="nav-game" target="_blank" rel="noreferrer">🎨 Comprar mis cuadros</a>
-      <a href="https://www.redbubble.com/es/people/pilukarts/shop" class="nav-game" target="_blank" rel="noreferrer">🛍 Tienda Pilukarts</a>
+      <a href="#tienda" data-i18n="navShop">Tienda</a>
       <a href="#noticias">Noticias</a>
       <a href="#proyectos">Código</a>
       <a href="#web3">Web3</a>
       <a href="#contacto">Contacto</a>
       <a class="kofi-nav" href="https://ko-fi.com/mariadelpilarrodriguezcastillejo" target="_blank" rel="noreferrer">Apoyar en Ko-fi ↗</a>
-      <a href="#estadisticas" data-i18n="navStats">Estadísticas</a>
       <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Cambiar idioma">ES | <b>EN</b></button>
 
     </nav>
@@ -52,7 +49,7 @@
     <section class="hero creator-section" id="creadora">
       <div class="hero-copy">
         <p class="eyebrow"><span class="pulse"></span> <span data-i18n="eyebrow">Código · Diseño · Ideas</span></p>
-        <h1 data-i18n="hero">Arte con lógica.<br /><em>Código con alma.</em></h1>
+        <h2 class="creator-title" data-i18n="hero">Arte con lógica.<br /><em>Código con alma.</em></h2>
         <p class="intro" id="bio" data-fallback="bio">Soy ilustradora y full stack developer. Diseño personajes, interfaces y sistemas que convierten ideas en experiencias completas.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#proyectos" data-i18n="explore">Explorar proyectos</a>
@@ -128,6 +125,28 @@
       </div>
     </section>
 
+    <section class="shop-section section" id="tienda" aria-labelledby="shop-heading">
+      <div class="section-heading">
+        <div><p class="section-number" data-i18n="shopLabel">ARTE / TIENDA PILUKARTS</p><h2 id="shop-heading" data-i18n="shopTitle">Del universo digital<br><em>a tu día a día.</em></h2></div>
+        <p class="section-intro" data-i18n="shopIntro">Ilustraciones y personajes que también puedes llevar contigo o disfrutar en casa.</p>
+      </div>
+      <div class="shop-options">
+        <article class="shop-option">
+          <p class="section-number">01 / REDBUBBLE</p>
+          <h3 data-i18n="merchTitle">Lleva mi arte contigo.</h3>
+          <p data-i18n="merchCopy">Explora los diseños de Super Piluka, Pilukarts y mis ilustraciones en ropa, pegatinas y accesorios.</p>
+          <a class="button button-primary" href="https://www.redbubble.com/es/people/pilukarts/shop" target="_blank" rel="noopener noreferrer" data-i18n="merchLink">Ver merchandising en Redbubble ↗</a>
+        </article>
+        <article class="shop-option">
+          <p class="section-number">02 / PRINTUMO</p>
+          <h3 data-i18n="printsTitle">Un espacio para el arte.</h3>
+          <p data-i18n="printsCopy">Descubre mi tienda de cuadros e impresiones para dar un lugar a Pilukarts en tu hogar.</p>
+          <a class="button button-ghost" href="https://printumo.com/shop/pilukarts-in-the-world" target="_blank" rel="noopener noreferrer" data-i18n="printsLink">Ver cuadros en Printumo ↗</a>
+        </article>
+      </div>
+      <p class="shop-note" data-i18n="shopNote">La compra se realiza en cada tienda, donde puedes consultar precios, formatos y condiciones de envío.</p>
+    </section>
+
     <section class="newsroom section" id="noticias">
       <div class="section-heading"><div><p class="section-number">02 / TRANSMISIONES</p><h2>Señales del<br><em>laboratorio.</em></h2></div><div><p class="section-intro">Pequeñas noticias de software generadas a partir de la actividad real de mis proyectos.</p><div class="signal-legend"><span class="fresh"></span>Nuevo <span class="recent"></span>Reciente <span class="archive"></span>Archivo</div></div></div>
       <div class="news-grid dev-signals" id="dev-signals"><p class="message">Conectando con el laboratorio…</p></div>
@@ -167,6 +186,7 @@
       </div>
     </section>
 
+    <details class="future-plans"><summary data-i18n="futurePlans">Explorar los planes de coleccionables y eventos</summary>
     <section class="drops section" id="airdrops">
       <div class="drop-orbit" aria-hidden="true"><span>★</span><i></i><i></i><i></i></div>
       <div class="drop-copy"><p class="section-number">03 / RECOMPENSAS CÓSMICAS</p><h2 data-i18n="dropsTitle">Airdrops y<br><em>eventos.</em></h2><p>Recompensas digitales, cosméticos de Astro y premios de temporada. La primera misión se anunciará aquí.</p><div class="status-pill"><span></span> PRÓXIMAMENTE · SIN AIRDROP ACTIVO</div><small>No conectes una cartera ni envíes fondos: actualmente no existe ninguna campaña oficial activa.</small></div>
@@ -180,6 +200,8 @@
         <article class="nft-card nft-astro"><div class="nft-art">★<span>◈</span></div><small>COSMIC COLLECTION</small><h3>Astro Genesis</h3><span class="nft-state">PRÓXIMAMENTE</span></article>
       </div>
     </section>
+
+    </details>
 
     <section class="repository-gateway section" id="proyectos">
       <div class="repo-gateway-symbol" aria-hidden="true">P</div>
