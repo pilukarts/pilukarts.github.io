@@ -163,3 +163,60 @@ footer>span:last-child{justify-self:end;color:#a9a9a9;font-size:13px}.footer-bra
 
 /* Pixel inhabitants */
 .pixel-crew{display:flex;align-items:end;gap:9px;height:66px;margin:-.35rem .45rem .6rem;padding-left:.2rem;border-bottom:1px dashed #ff151f55}.pixel-crew>i{--crew:#ff151f;position:relative;display:grid;place-items:center;width:30px;height:30px;margin-bottom:9px;border:4px solid #fff;background:var(--crew);font-style:normal;image-rendering:pixelated;box-shadow:-4px 0 #500004,4px 0 #500004;animation:crew-walk 1.2s steps(2,end) infinite alternate}.pixel-crew>i:before{content:"";position:absolute;left:2px;right:2px;bottom:-13px;height:9px;background:linear-gradient(90deg,#fff 0 35%,transparent 35% 65%,#fff 65%)}.pixel-crew>i:after{content:"";position:absolute;left:4px;right:4px;top:-10px;height:6px;background:var(--crew);box-shadow:6px -4px #fff}.pixel-crew b{display:block;width:20px;padding:1px 0;background:#080808;color:#fff;text-align:center;font:900 9px/1 monospace;letter-spacing:1px}.pixel-crew .crew-two{--crew:#fff;animation-delay:-.3s}.pixel-crew .crew-two b{color:#ff151f}.pixel-crew .crew-three{--crew:#d40b14;animation-delay:-.6s}.pixel-crew .crew-four{--crew:#ff4b52;animation-delay:-.9s}@keyframes crew-walk{to{transform:translateY(-5px)}}@media(prefers-reduced-motion:reduce){.pixel-crew>i{animation:none}}
+
+/* Shop gateway and navigation refinements */
+.hero .creator-title{font-size:clamp(3.3rem,7vw,7.6rem);letter-spacing:-.075em;line-height:.95;margin:1.4rem 0 1.6rem;max-width:900px}
+.creator-title em,.shop-section h2 em{color:var(--red);font-style:normal}
+.shop-section{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.shop-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
+.shop-option{padding:2rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);display:flex;flex-direction:column;align-items:flex-start}
+.shop-option h3{font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.1;letter-spacing:-.04em;margin:1.5rem 0 1rem}
+.shop-option>p:not(.section-number){color:var(--muted);margin:0 0 2rem;max-width:48ch}
+.shop-option .button{margin-top:auto}
+.shop-note{color:var(--muted);font-size:.85rem;margin-top:1.5rem}
+.topbar nav{gap:clamp(.5rem,1.5vw,1.5rem)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--white);outline-offset:4px}
+section[id]{scroll-margin-top:100px}
+@media(max-width:900px){.topbar{height:auto;min-height:76px;flex-wrap:wrap;gap:.5rem;padding-top:.75rem;padding-bottom:.75rem}.topbar nav{width:100%;flex-wrap:wrap;gap:.5rem 1rem}.topbar nav a{display:inline-block!important}.topbar nav a,.lang-toggle{min-height:44px;display:inline-flex!important;align-items:center}.topbar nav .kofi-nav{display:none!important}section[id]{scroll-margin-top:160px}}
+@media(max-width:600px){.shop-options{grid-template-columns:1fr}.shop-option{padding:1.5rem}.shop-option .button{width:100%}.hero .creator-title{font-size:3.2rem}}
+
+.future-plans>summary{max-width:1264px;margin:auto;padding:1.5rem clamp(1.25rem,5vw,5.5rem);cursor:pointer;color:var(--white);border-bottom:1px solid var(--line)}.future-plans>summary:focus-visible{outline:2px solid var(--white);outline-offset:-4px}
+
+/* Visual portfolio: direct access to work, with planets retained in the cover art. */
+.featured-work{border-top:1px solid var(--line)}
+.work-list{display:grid;gap:3rem}
+.work-item{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;padding:2rem 0;border-bottom:1px solid var(--line)}
+.work-item:nth-child(even) .work-art{order:2}
+.work-art{position:relative;margin:0;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.work-art img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.work-art figcaption{padding:.75rem 1rem;border-top:1px solid var(--line);font-size:.75rem;letter-spacing:.08em;color:var(--muted)}
+.work-copy{min-width:0}
+.work-copy h3{font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.05em;line-height:1.05;margin:1rem 0}
+.work-copy>p{color:var(--muted);max-width:52ch}
+.work-state{display:inline-block;color:var(--white);border:1px solid var(--red);padding:.35rem .65rem;font-size:.7rem;font-weight:800;letter-spacing:.1em}
+.work-copy .work-skills{color:var(--white);font-size:.85rem;border-top:1px solid var(--line);padding-top:1rem;margin-top:1.5rem}
+.work-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.work-note,.work-more{color:var(--muted);font-size:.9rem;margin-top:2rem}
+.work-more summary{cursor:pointer;padding:1rem 0;color:var(--white)}
+.work-more li{margin:.75rem 0}.work-more a{color:var(--white)}
+.skills-overview{font-size:.9rem;color:var(--white)}
+@media(max-width:768px){.work-item{grid-template-columns:1fr;gap:1.5rem}.work-item:nth-child(even) .work-art{order:0}.work-actions .button{flex:1;text-align:center}}
+@media(max-width:400px){.work-actions{flex-direction:column}.work-copy h3{font-size:2rem}}
+
+/* Astro patrol: confined to the footer, with an explicit pause control. */
+.astro-footer{max-width:1440px;margin:0 auto;padding:1.5rem clamp(1.25rem,5vw,5.5rem) 0;border-top:1px solid var(--line)}
+.astro-footer-heading{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.astro-footer-heading a{color:var(--muted);font:700 .65rem/1.5 ui-monospace,monospace;letter-spacing:.08em;text-decoration:none}
+.astro-footer-heading a:hover{color:var(--white)}
+#astro-motion{border:1px solid var(--line);background:transparent;color:var(--muted);font:inherit;font-size:.75rem;padding:.5rem .75rem;min-height:44px;cursor:pointer}
+.astro-track{height:96px;border-bottom:1px solid var(--line);overflow:hidden;position:relative}
+.astro-walker{position:absolute;left:0;bottom:0;width:48px;height:76px;animation:astro-patrol 22s linear infinite}
+.astro-track .footer-astro{--px:4px;position:relative;right:auto;bottom:auto;animation:none;width:48px;height:72px;filter:none}
+.footer-astro .pixel-leg{animation:astro-step .5s steps(2,end) infinite}
+.footer-astro .leg-r{animation-delay:-.25s}
+.footer-astro .arm-r{transform-origin:top center;animation:astro-wave 22s ease-in-out infinite}
+.astro-footer.is-paused .astro-walker,.astro-footer.is-paused .footer-astro i{animation-play-state:paused}
+@keyframes astro-patrol{0%,8%{left:0;transform:scaleX(1)}42%,50%{left:calc(100% - 48px);transform:scaleX(1)}51%,58%{left:calc(100% - 48px);transform:scaleX(-1)}92%,99%{left:0;transform:scaleX(-1)}100%{left:0;transform:scaleX(1)}}
+@keyframes astro-step{to{transform:translateY(-3px)}}
+@keyframes astro-wave{0%,40%,51%,90%,100%{transform:rotate(0)}43%,47%,93%,97%{transform:rotate(-125deg)}45%,49%,95%,99%{transform:rotate(-90deg)}}
+@media(prefers-reduced-motion:reduce){.astro-walker,.footer-astro .pixel-leg,.footer-astro .arm-r{animation:none!important}.footer-astro .arm-r{transform:rotate(-110deg)}#astro-motion{display:none}}
